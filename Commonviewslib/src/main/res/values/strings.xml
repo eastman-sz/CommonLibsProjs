@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CommonViewsLib</string>
+
+    <string name="sfs_back">Back</string>
+
+    <string name="font_path">fonts/fzlt.TTF</string>
+    <string name="font_digit_path">fonts/HelveticaNeue-Condensed.otf</string>
+
+</resources>

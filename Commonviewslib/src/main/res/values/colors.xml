@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="transparent">#00000000</color> <!-- 透明 -->
+
+    <color name="sfs_c1">#FFFFFF</color>
+    <color name="sfs_c2">#ADADAD</color>
+    <color name="sfs_c3">#FC6161</color>
+    <color name="sfs_c4">#464754</color>
+    <color name="sfs_c5">#505050</color>
+    <color name="sfs_c6">#ECECEC</color>
+    <color name="sfs_c7">#878787</color>
+    <color name="sfs_c8">#CCCCCC</color>
+    <color name="sfs_c9">#DCDCDC</color>
+    <color name="sfs_c10">#1D1D26</color>
+    <color name="sfs_c11">#007AFF</color>
+    <color name="sfs_c12">#000000</color>
+    <color name="sfs_c13">#F4F5F4</color>
+
+    <color name="sfs_c111">#FC6161</color>
+    <color name="sfs_c112">#EC6167</color>
+    <color name="sfs_page_bg_color">#F4F5F4</color>
+    <color name="sfs_c119">#C5C6CC</color>
+</resources>

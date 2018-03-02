@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.libs.module.ble.tzcheng.TzchengActivity"
+    android:orientation="vertical"
+    android:background="@color/sfs_page_bg_color"
+    >
+    <com.common.base.CommonTitleView
+        android:id="@+id/commontitle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.common.base.CustomFontTextView
+        android:id="@+id/dataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textSize="@dimen/sfs_s6"
+        android:textColor="@color/c12"
+        android:padding="15dp"
+        android:gravity="fill_horizontal"
+        />
+    <com.common.base.CustomFontTextView
+        android:id="@+id/calBtnTextView"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/common_btn_corner_retangle_selector"
+        android:gravity="center"
+        android:textColor="@color/c10"
+        android:textSize="@dimen/sfs_s6"
+        android:text="手动计算"
+        android:onClick="onBtnClick"
+        android:clickable="true"
+        />
+    <ImageView style="@style/full_line_style" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:fadeScrollbars="true"
+        />
+
+</LinearLayout>

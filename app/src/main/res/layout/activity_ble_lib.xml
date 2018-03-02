@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.libs.module.ble.BleLibActivity"
+    android:visibility="visible"
+    android:orientation="vertical"
+    android:background="@color/sfs_c1"
+    >
+    <com.common.base.CommonTitleView
+        android:id="@+id/commontitle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <com.common.base.CustomFontTextView
+        android:id="@+id/dataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textColor="@color/c12"
+        android:textSize="@dimen/sfs_s4"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:lineSpacingMultiplier="1.2"
+        android:lineSpacingExtra="1dp"
+        />
+
+    <ImageView style="@style/full_line_style"/>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:fadeScrollbars="true"
+        />
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.libs.module.ble.BleFuncActivity"
+    android:orientation="vertical"
+    android:background="@color/sfs_page_bg_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/list_item_bg"
+        >
+        <ImageView
+            android:id="@+id/type_icon_imageView"
+            android:layout_width="52dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            />
+        <com.common.base.CustomFontTextView
+            android:id="@+id/name_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/c12"
+            android:textSize="@dimen/sfs_s6"
+            android:gravity="center_vertical|left"
+            android:text="Common"
+            android:paddingLeft="10dp"
+            />
+    </LinearLayout>
+
+    <ImageView style="@style/full_line_style" />
+
+</LinearLayout>
