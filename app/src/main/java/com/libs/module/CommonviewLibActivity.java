@@ -7,6 +7,7 @@ import com.common.base.BaseAppCompactActivitiy;
 import com.common.base.CommonTitleView;
 import com.common.dialog.CommonDialog;
 import com.common.dialog.OnCommonDialogBtnClickListener;
+import com.common.dialog.SingleBtnDialog;
 import com.common.libs.proj.R;
 
 public class CommonviewLibActivity extends BaseAppCompactActivitiy {
@@ -31,21 +32,50 @@ public class CommonviewLibActivity extends BaseAppCompactActivitiy {
         });
     }
 
-    public void showCommonDialog(View view){
-        CommonDialog dialog = new CommonDialog(context);
-        dialog.show();
-        dialog.setDialogText("" , "Content" , "取消" , "确定");
-        dialog.setOnCommonDialogBtnClickListener(new OnCommonDialogBtnClickListener() {
-            @Override
-            public void onLeftBtnClik() {
+    public void onBtnClick(View view){
+        switch (view.getId()){
+            case R.id.commomDialog:
+            {
+                CommonDialog dialog = new CommonDialog(context);
+                dialog.show();
+                dialog.setDialogText("" , "Content" , "取消" , "确定");
+                dialog.setOnCommonDialogBtnClickListener(new OnCommonDialogBtnClickListener() {
+                    @Override
+                    public void onLeftBtnClik() {
 
-            }
-            @Override
-            public void onRightBtnClik() {
+                    }
+                    @Override
+                    public void onRightBtnClik() {
 
+                    }
+                });
             }
-        });
+                break;
+            case R.id.singleBtnDialog:
+            {
+                SingleBtnDialog dialog = new SingleBtnDialog(context);
+                dialog.show();
+                dialog.setDialogText("Title" , "Content" , "确定");
+                dialog.setOnSingleBtnClickListener(new SingleBtnDialog.OnSingleBtnClickListener() {
+                    @Override
+                    public void onSingleBtnClick() {
+
+                    }
+                });
+            }
+            break;
+            case R.id.swipMenu:
+            {
+                startActivity(new Intent(context , SwipeMenuActivity.class));
+            }
+                break;
+            default:
+                break;
+
+
+        }
     }
+
 
     public void showSwipeMenu(View view){
         startActivity(new Intent(context , SwipeMenuActivity.class));

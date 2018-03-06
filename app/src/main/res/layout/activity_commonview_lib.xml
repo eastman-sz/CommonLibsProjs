@@ -13,6 +13,7 @@
         android:layout_height="wrap_content" />
 
     <com.common.base.CustomFontTextView
+        android:id="@+id/commomDialog"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:textColor="@color/sfs_c5"
@@ -20,13 +21,30 @@
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:text="CommonDialog"
-        android:onClick="showCommonDialog"
+        android:onClick="onBtnClick"
+        android:clickable="true"
+        />
+
+    <ImageView style="@style/full_line_style" />
+
+
+    <com.common.base.CustomFontTextView
+        android:id="@+id/singleBtnDialog"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textColor="@color/sfs_c5"
+        android:textSize="@dimen/sfs_s5"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="SingleBtnDialog"
+        android:onClick="onBtnClick"
         android:clickable="true"
         />
 
     <ImageView style="@style/full_line_style" />
 
     <com.common.base.CustomFontTextView
+        android:id="@+id/swipMenu"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:textColor="@color/sfs_c5"
@@ -34,7 +52,7 @@
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:text="SwipeMenu"
-        android:onClick="showSwipeMenu"
+        android:onClick="onBtnClick"
         android:clickable="true"
         />
 

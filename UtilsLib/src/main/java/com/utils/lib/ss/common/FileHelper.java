@@ -15,7 +15,7 @@ import android.util.Log;
 public class FileHelper {
 
 	//统一的项目存储地址
-	private static String  UNIFROM_STORE_FILE_PATH = Environment.getExternalStorageDirectory() + "/.sdk/";
+	private static String  UNIFROM_STORE_FILE_PATH = Environment.getExternalStorageDirectory() + "/sdk/";
 	//图片存储地址
 	private static String  UNIFROM_IMAGE_FILE_PATH = UNIFROM_STORE_FILE_PATH + "images/";
 	//语音存储地址
