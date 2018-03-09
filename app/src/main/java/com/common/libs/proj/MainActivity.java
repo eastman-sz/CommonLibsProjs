@@ -16,6 +16,7 @@ import com.libs.module.ble.BleLibActivity;
 import com.libs.module.noti.NotifiActivity;
 import com.libs.module.phone.TelActivity;
 import com.libs.module.usb.UsbActivity;
+import com.libs.module.wheelview.DateTimeSelectDialog;
 
 import java.util.ArrayList;
 
@@ -58,6 +59,7 @@ public class MainActivity extends BaseAppCompactActivitiy {
         list.add("USB");
         list.add("Notification");
         list.add("Noti Tel");
+        list.add("Wheelview");
 
         listView = (ListView) findViewById(R.id.listView);
         TextAdapter adapter = new TextAdapter(this , list);
@@ -66,15 +68,39 @@ public class MainActivity extends BaseAppCompactActivitiy {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(context , 0 == position ? UtilsLibActivity.class
-                        : 1 == position ? com.ss.number.progress.bar.MainActivity.class
-                        : 2 == position ? CommonviewLibActivity.class
-                        : 3 == position ? BleFuncActivity.class
-                        : 4 == position ? UsbActivity.class
-                        : 5 == position ? NotifiActivity.class
-                        : 6 == position ? TelActivity.class
-                        : CommonviewLibActivity.class
-                ));
+                switch (position){
+                    case 0:
+                        startActivity(new Intent(context , UtilsLibActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(context , MainActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(context , CommonviewLibActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(context , BleFuncActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(context , UsbActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(context , NotifiActivity.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(context , TelActivity.class));
+                        break;
+                    case 7:
+                    {
+                        DateTimeSelectDialog dialog = new DateTimeSelectDialog(context);
+                        dialog.show();
+                        dialog.setTimestamp(System.currentTimeMillis());
+                    }
+                        break;
+                    default:
+                        break;
+                }
+
             }
         });
     }

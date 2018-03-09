@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="pop_half_bg_color">#80000000</color>
+    <color name="transparent">#00000000</color> <!-- 透明 -->
+    <color name="white">#ffffff</color> <!-- 白色 -->
+    <color name="background_tab_pressed">#6633B5E5</color>
+
     <color name="c1">#FC9153</color>
     <color name="c2">#EA8347</color>
     <color name="c3">#FFC3A1</color>

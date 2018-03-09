@@ -184,8 +184,9 @@ public class PkgHelper {
 		List<PackageInfo> pakList = manager.getInstalledPackages(0);
 		try {
 			for(PackageInfo info:pakList){
-				if((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) <= 0){
-					Drawable icon = manager.getApplicationIcon(info.applicationInfo.packageName);
+				if((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
+//					Drawable icon = manager.getApplicationIcon(info.applicationInfo.packageName);
+					Drawable icon =info.applicationInfo.loadIcon(manager);
 					String labelName = (String) info.applicationInfo.loadLabel(manager);
 					String pkgName = info.packageName;
 					String version = info.versionName;
@@ -198,6 +199,33 @@ public class PkgHelper {
 		}
 		return loaclGames;
 	}
+
+    /**
+     * 查询手机内非系统系统应用
+     * @param context 上下文环境
+     * @return 所有的非系统应用。
+     */
+    public static ArrayList<LocalAppInfo> getLocalSystemInstalPackage(Context context){
+        ArrayList<LocalAppInfo> loaclGames = new ArrayList<LocalAppInfo>();
+        PackageManager manager = context.getPackageManager();
+        List<PackageInfo> pakList = manager.getInstalledPackages(0);
+        try {
+            for(PackageInfo info:pakList){
+                if((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0){
+                    //Drawable icon = manager.getApplicationIcon(info.applicationInfo.packageName);
+                    Drawable icon =info.applicationInfo.loadIcon(manager);
+                    String labelName = (String) info.applicationInfo.loadLabel(manager);
+                    String pkgName = info.packageName;
+                    String version = info.versionName;
+                    LocalAppInfo localAppInfo = new LocalAppInfo(pkgName, labelName, version, icon);
+                    loaclGames.add(localAppInfo);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return loaclGames;
+    }
 
     /**
      * 查询手机内所有应用
