@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
@@ -42,11 +43,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile project(':UtilsLib')
     compile project(':Numberprogressbar')
-    compile project(':Commonviewslib')
+    implementation project(':Commonviewslib')
     testCompile 'junit:junit:4.12'
     implementation project(':blelib')
     implementation project(':ZZBleLibRelease')
     compile(name: 'fcbodyfatlibrary_v1.0.0_2017_1130_release', ext: 'aar')
     implementation project(':wheelview')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(':pullFreshView')
 }

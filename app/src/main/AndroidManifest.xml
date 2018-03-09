@@ -42,7 +42,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- 监听来电 -->
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <!-- 监听短信 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
@@ -123,18 +123,19 @@
         </service>
 
         <activity android:name="com.libs.module.noti.NotifiActivity" />
-        <activity android:name="com.libs.module.phone.TelActivity"></activity>
+        <activity android:name="com.libs.module.phone.TelActivity" />
 
         <!-- 短信监听 -->
-        <receiver android:name="com.libs.module.phone.SmsBroadcastReceiver"
-            android:permission="android.permission.BROADCAST_SMS"
-            >
+        <receiver
+            android:name="com.libs.module.phone.SmsBroadcastReceiver"
+            android:permission="android.permission.BROADCAST_SMS">
             <intent-filter android:priority="2147483647">
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
+        <activity android:name="com.libs.module.pullfreshview.PullFreshViewActivity"></activity>
     </application>
 
 </manifest>

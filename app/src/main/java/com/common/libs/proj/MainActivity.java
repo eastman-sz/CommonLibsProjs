@@ -15,6 +15,7 @@ import com.libs.module.ble.BleFuncActivity;
 import com.libs.module.ble.BleLibActivity;
 import com.libs.module.noti.NotifiActivity;
 import com.libs.module.phone.TelActivity;
+import com.libs.module.pullfreshview.PullFreshViewActivity;
 import com.libs.module.usb.UsbActivity;
 import com.libs.module.wheelview.DateTimeSelectDialog;
 
@@ -60,6 +61,7 @@ public class MainActivity extends BaseAppCompactActivitiy {
         list.add("Notification");
         list.add("Noti Tel");
         list.add("Wheelview");
+        list.add("pullFreshView");
 
         listView = (ListView) findViewById(R.id.listView);
         TextAdapter adapter = new TextAdapter(this , list);
@@ -96,6 +98,9 @@ public class MainActivity extends BaseAppCompactActivitiy {
                         dialog.show();
                         dialog.setTimestamp(System.currentTimeMillis());
                     }
+                        break;
+                    case 8:
+                        startActivity(new Intent(context , PullFreshViewActivity.class));
                         break;
                     default:
                         break;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  
+  <!-- 主菜单 -->
+  <item name="selected_view" type="id"/>
+  
+  <item type="id" name="scrollview" />
+  <item type="id" name="gridview" />
+    <item type="id" name="webview" />
+
+</resources>
