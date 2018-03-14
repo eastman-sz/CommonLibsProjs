@@ -1,5 +1,6 @@
 package com.utils.lib.ss.info;
 
+import android.Manifest;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 
@@ -16,8 +17,7 @@ public class SIMCardInfo {
 	 */
 	public static String getNativePhoneNumber(Context context) {
 		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-		String NativePhoneNumber=null;
-		NativePhoneNumber=telephonyManager.getLine1Number();
+		String NativePhoneNumber = telephonyManager.getLine1Number();
 		return NativePhoneNumber;
 	}
 	

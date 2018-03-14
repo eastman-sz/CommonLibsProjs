@@ -76,6 +76,14 @@ public class CommonTitleView extends BaseRelativeLayout {
         centerTitleTextView.setText(centerTitleText);
     }
 
+    public void setLeftBtnVisibility(int visibility){
+        leftBtnTextView.setVisibility(visibility);
+    }
+
+    public void setRightBtnVisibility(int visibility){
+        rightBtnTextView.setVisibility(visibility);
+    }
+
     public void setRightBtnText(String rightBtnText){
         rightBtnTextView.setText(rightBtnText);
     }
