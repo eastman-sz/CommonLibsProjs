@@ -27,8 +27,7 @@ public abstract class BaseHttpImp2 implements BaseHttp{
 	
 	public static final int RESULT_OK = 9999999;
 	public static final int NET_ERROR_CODE = 9999998;
-	public static final int ERROR_REQUEST = 9999997;
-	
+
 	public static final String NET_ERROR_STRING = "NetError";
 	
 	//JSON里的ＫＥＹ
