@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.common.libs.proj"
         minSdkVersion 19
@@ -35,20 +35,20 @@ repositories {
 ext.kotlin_version = '1.2.30'
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
-    compile project(':UtilsLib')
-    compile project(':Numberprogressbar')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.1'
+    implementation project(':UtilsLib')
+    implementation project(':Numberprogressbar')
     implementation project(':Commonviewslib')
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     implementation project(':blelib')
     implementation project(':ZZBleLibRelease')
-    compile(name: 'fcbodyfatlibrary_v1.0.0_2017_1130_release', ext: 'aar')
+    implementation(name: 'fcbodyfatlibrary_v1.0.0_2017_1130_release', ext: 'aar')
     implementation project(':wheelview')
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':pullFreshView')
 }

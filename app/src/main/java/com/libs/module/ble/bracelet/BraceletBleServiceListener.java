@@ -9,15 +9,15 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+
+import com.alibaba.fastjson.JSON;
 import com.ble.lib.application.BleApplication;
 import com.ble.lib.f.BleCharacteristicHelper;
-import com.ble.lib.f.BleHelper;
 import com.ble.lib.f.BleServiceListener;
 import com.ble.lib.f.BluetoothGattCallbackHelper;
 import com.ble.lib.f.DevType;
 import com.ble.lib.util.CommonBleUtils;
 import com.common.libs.util.ILog;
-import com.google.gson.Gson;
 import com.libs.module.ble.tizhicheng.TzcMath;
 import java.text.MessageFormat;
 import java.util.UUID;
@@ -259,9 +259,7 @@ public class BraceletBleServiceListener implements BleServiceListener {
             braceletData.setDistance(distance);
             braceletData.setCalorie(calorie);
 
-            Gson gson = new Gson();
-
-            String json = gson.toJson(braceletData);
+            String json = JSON.toJSONString(braceletData);
             //回调数据
             BluetoothGattCallbackHelper.onDataReceived(DevType.HW330A, address, json);
 

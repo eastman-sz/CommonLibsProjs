@@ -5,12 +5,13 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+
+import com.alibaba.fastjson.JSON;
 import com.ble.lib.f.BleServiceListener;
 import com.ble.lib.f.BluetoothGattCallbackHelper;
 import com.ble.lib.f.BleCharacteristicHelper;
 import com.ble.lib.util.CommonBleUtils;
 import com.common.libs.util.ILog;
-import com.google.gson.Gson;
 import com.utils.lib.ss.common.MathUtil;
 import java.util.UUID;
 /**
@@ -144,9 +145,7 @@ public class TizhichengNewBleServiceListener implements BleServiceListener {
 
         TzcBean tzcBean = new TzcBean(weight , impedanceEn);
 
-        Gson gson = new Gson();
-
-        String joson = gson.toJson(tzcBean);
+        String joson = JSON.toJSONString(tzcBean);
         //回调数据
         BluetoothGattCallbackHelper.onDataReceived(20, address, joson);
 

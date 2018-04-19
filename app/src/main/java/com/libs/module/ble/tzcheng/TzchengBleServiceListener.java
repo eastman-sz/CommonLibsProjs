@@ -5,12 +5,13 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+
+import com.alibaba.fastjson.JSON;
 import com.ble.lib.f.BleServiceListener;
 import com.ble.lib.f.BluetoothGattCallbackHelper;
 import com.ble.lib.f.BleCharacteristicHelper;
 import com.ble.lib.util.CommonBleUtils;
 import com.common.libs.util.ILog;
-import com.google.gson.Gson;
 import com.libs.module.ble.tizhicheng.TzcMath;
 import com.utils.lib.ss.common.MathUtil;
 
@@ -215,9 +216,7 @@ public class TzchengBleServiceListener implements BleServiceListener {
                 System.err.println("BMI: " + bmiHex);
                 System.err.println("内脏脂肪: " + neiZangZhiFangHex);
 
-                Gson gson = new Gson();
-
-                String joson = gson.toJson(tzchengData);
+                String joson = JSON.toJSONString(tzchengData);
                 //回调数据
                 BluetoothGattCallbackHelper.onDataReceived(21, address, joson);
 

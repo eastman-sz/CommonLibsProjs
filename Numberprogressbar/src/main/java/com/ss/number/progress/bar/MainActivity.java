@@ -2,13 +2,14 @@ package com.ss.number.progress.bar;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends ActionBarActivity implements OnProgressBarListener {
+public class MainActivity extends AppCompatActivity implements OnProgressBarListener {
     private Timer timer;
 
     private NumberProgressBar bnp;
