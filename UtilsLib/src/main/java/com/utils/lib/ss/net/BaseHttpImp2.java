@@ -7,18 +7,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
 import com.utils.lib.ss.common.ThreadPool;
 /**
  * 网络访问的实现类，返回网络状态码和内容。
@@ -49,18 +45,24 @@ public abstract class BaseHttpImp2 implements BaseHttp{
 	public String sendRequest(HashMap<String, Object> params , String... urls) throws Exception{
 		JSONObject jsonObject = new JSONObject();
 		try {
-			HttpURLConnection resultUrlConnection = sendPostRequest(urls, params);
-			int responseCode = resultUrlConnection.getResponseCode(); 
+		    RequestResult requestResult = sendPostRequest(urls, params);
+			int responseCode = requestResult.getResponseCode();
 			String result = null;
 			if (200 == responseCode) {
-				result = read2String(resultUrlConnection.getInputStream()).toString();
+			    String errorMsg = "All right";
+			    try{
+                    result = read2String(requestResult.getHttpURLConnection().getInputStream()).toString();
+                }catch (Exception e){
+                    errorMsg = (null == e) ? "Unknown error msg" : e.getLocalizedMessage();
+                }
 				jsonObject = new JSONObject(result);
+                jsonObject.put("errorMsg" , errorMsg);
 			}
 			jsonObject.put(RESPONSECODE, responseCode);
 			
 		} catch (Exception e) {
 			try {
-				jsonObject.put(RESPONSECODE, ERROR_REQUEST);
+				jsonObject.put("errorMsg", (null == e) ? "Unknown error msg" : e.getLocalizedMessage());
 			} catch (JSONException e1) {
 				e1.printStackTrace();
 			}
@@ -141,7 +143,7 @@ public abstract class BaseHttpImp2 implements BaseHttp{
 		});
 	}
 
-	private HttpURLConnection sendPostRequest(String[] urls , HashMap<String, Object> params) throws Exception {
+	private RequestResult sendPostRequest(String[] urls , HashMap<String, Object> params) throws Exception {
 		int length = urls.length;
 		if (length == 0) {
 			return null;
@@ -162,13 +164,13 @@ public abstract class BaseHttpImp2 implements BaseHttp{
 			}
 			builder.deleteCharAt(builder.length() - 1);
 		}
-		HttpURLConnection conn  = sendPost(urls, 0, builder);
-		return conn;
+		RequestResult requestResult  = sendPost(urls, 0, builder);
+		return requestResult;
 	}
 	
 	public abstract HashMap<String, Object> specialHandleParams(HashMap<String, Object> params);
 	
-	private  HttpURLConnection sendPost(String[] urls , int urlIndex, StringBuilder builder) throws Exception{
+	private  RequestResult sendPost(String[] urls , int urlIndex, StringBuilder builder) throws Exception{
 		String requestUrl = urls[urlIndex];
 		int urlSize = urls.length;
 		URL url = new URL(requestUrl);
@@ -183,7 +185,10 @@ public abstract class BaseHttpImp2 implements BaseHttp{
 			urlIndex ++ ;
 			sendPost(urls, urlIndex, builder);
 		}
-		return conn;
+		RequestResult requestResult = new RequestResult();
+		requestResult.setResponseCode(responseCode);
+		requestResult.setHttpURLConnection(conn);
+		return requestResult;
 	}
 	
 	/**
