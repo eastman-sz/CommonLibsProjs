@@ -36,7 +36,7 @@ public abstract class BaseHttpImp2 implements BaseHttp{
 	
 	/**
 	 * Send request to server (Basic method).
-	 * @param urls 地址数组
+	 * @param urls 地址数组 String[]
 	 * @param params params to send
 	 * @return result returned
 	 * @throws Exception exception caused
