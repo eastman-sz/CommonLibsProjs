@@ -12,7 +12,7 @@ public class ThreadPool {
 	private static ExecutorService pool;  
 	 
     static {  
-        pool = Executors.newFixedThreadPool(30);
+        pool = Executors.newFixedThreadPool(50);
     }  
 	
     public static void add(Runnable runnable){
