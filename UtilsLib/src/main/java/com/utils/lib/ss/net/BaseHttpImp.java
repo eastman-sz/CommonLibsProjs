@@ -19,6 +19,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public abstract class BaseHttpImp implements BaseHttp{
 	
 	private static final String CHARSET = "utf-8";
@@ -28,8 +31,11 @@ public abstract class BaseHttpImp implements BaseHttp{
 	public static final int NET_ERROR_CODE = 9999998;
 	
 	public static final String NET_ERROR_STRING = "NetError";
-	
-	/**
+
+    //JSON里的ＫＥＹ
+    public static final String RESPONSECODE = "responseCode";
+
+    /**
 	 * Send request to server (Basic method).
 	 * @param urls 地址数组
 	 * @param params params to send
@@ -38,9 +44,31 @@ public abstract class BaseHttpImp implements BaseHttp{
 	 */
 	@Override
 	public String sendRequest(HashMap<String, Object> params , String... urls) throws Exception{
-		URLConnection resultUrlConnection = sendPostRequest(urls, params);
-		String result = read2String(resultUrlConnection.getInputStream()).toString();
-		return result;
+        JSONObject jsonObject = new JSONObject();
+        try {
+            RequestResult requestResult = sendPostRequest(urls, params);
+            int responseCode = requestResult.getResponseCode();
+            String result = null;
+            if (200 == responseCode) {
+                String errorMsg = "All right";
+                try{
+                    result = read2String(requestResult.getHttpURLConnection().getInputStream()).toString();
+                }catch (Exception e){
+                    errorMsg = (null == e) ? "Unknown error msg" : e.getLocalizedMessage();
+                }
+                jsonObject = new JSONObject(result);
+                jsonObject.put("errorMsg" , errorMsg);
+            }
+            jsonObject.put(RESPONSECODE, responseCode);
+
+        } catch (Exception e) {
+            try {
+                jsonObject.put("errorMsg", (null == e) ? "Unknown error msg" : e.getLocalizedMessage());
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return jsonObject.toString();
 	}
 	
 	@Override
@@ -116,7 +144,7 @@ public abstract class BaseHttpImp implements BaseHttp{
 		});
 	}
 
-	private URLConnection sendPostRequest(String[] urls , HashMap<String, Object> params) throws Exception {
+	private RequestResult sendPostRequest(String[] urls , HashMap<String, Object> params) throws Exception {
 		int length = urls.length;
 		if (length == 0) {
 			return null;
@@ -137,13 +165,13 @@ public abstract class BaseHttpImp implements BaseHttp{
 			}
 			builder.deleteCharAt(builder.length() - 1);
 		}
-		HttpURLConnection conn  = sendPost(urls, 0, builder);
-		return conn;
+        RequestResult requestResult  = sendPost(urls, 0, builder);
+        return requestResult;
 	}
 	
 	public abstract HashMap<String, Object> specialHandleParams(HashMap<String, Object> params);
 	
-	private  HttpURLConnection sendPost(String[] urls , int urlIndex, StringBuilder builder) throws Exception{
+	private  RequestResult sendPost(String[] urls , int urlIndex, StringBuilder builder) throws Exception{
 		String requestUrl = urls[urlIndex];
 		int urlSize = urls.length;
 		URL url = new URL(requestUrl);
@@ -158,7 +186,10 @@ public abstract class BaseHttpImp implements BaseHttp{
 			urlIndex ++ ;
 			sendPost(urls, urlIndex, builder);
 		}
-		return conn;
+		RequestResult requestResult = new RequestResult();
+		requestResult.setResponseCode(responseCode);
+		requestResult.setHttpURLConnection(conn);
+		return requestResult;
 	}
 	
 	/**
