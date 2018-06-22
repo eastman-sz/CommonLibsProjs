@@ -26,7 +26,7 @@ task deleteOldJar(type: Delete) {
 }
 
 task exportJar(type: Copy) {
-    from('build/intermediates/intermediate-jars/debug/')
+    from('build/intermediates/intermediate-jars/debug')
     /*from('build/intermediates/bundles/debug/')*/
     /*into('build/libs/')*/
     into('D://libs/')

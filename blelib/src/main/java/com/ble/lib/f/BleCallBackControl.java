@@ -25,11 +25,11 @@ public class BleCallBackControl {
     private BleCallBackControl() {
         serviceListeners.clear();
         serviceListeners.add(new CommonBleServiceListener());
-        serviceListeners.add(new Ld1BleServiceListener());
-        serviceListeners.add(new Ld2BleServiceListener());
-        serviceListeners.add(new LdTreadMillBoxBleServiceListener());
-        serviceListeners.add(new ShuHuaBleServiceListener());
-        serviceListeners.add(new LdShoesBleServiceListener());
+//        serviceListeners.add(new Ld1BleServiceListener());
+//        serviceListeners.add(new Ld2BleServiceListener());
+//        serviceListeners.add(new LdTreadMillBoxBleServiceListener());
+//        serviceListeners.add(new ShuHuaBleServiceListener());
+//        serviceListeners.add(new LdShoesBleServiceListener());
     }
 
     public static BleCallBackControl getInstance(){

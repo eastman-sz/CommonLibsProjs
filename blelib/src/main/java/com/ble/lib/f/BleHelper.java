@@ -180,18 +180,9 @@ public class BleHelper {
 				BleLog.e("-------释放资源--------------------------");
 				return;
 			}
-			if (BleStatusHelper.getInstance().isBleEnabled(BleApplication.getContext())) {
-				
-			}
-			//设备自动连接
-			if (!hasRegisteredAutoConnect(address) && BleStatusHelper.getInstance().isBleEnabled(BleApplication.getContext())) {
-//				if (status == 133) {//new add
-//					//出现异常时重新连接
-//					disconnect(address); 
-//					
-//					startConnect(SdkApplication.getContext(), address);
-//				}else {
 
+			//设备自动连接 //!hasRegisteredAutoConnect(address) &&
+			if (BleStatusHelper.getInstance().isBleEnabled(BleApplication.getContext())) {
 				BleLog.e("连接异常，自动断开重连");
                 //add new
                 Handler handler = new Handler(Looper.getMainLooper()){
@@ -209,19 +200,8 @@ public class BleHelper {
                 disconnect(address);
                 registerAutoConnect(address);
                 handler.sendEmptyMessageDelayed(10101, 600);
-
-/*                    gatt.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_HIGH);
-
-					gatt.connect();
-
-					registerAutoConnect(address);
-
-				    BleLog.e("--------注册自动连接------------");
-					
-					//更改状态为正在连接
-					newState = BluetoothProfile.STATE_CONNECTING;*/
-//				}
 			}
+
 			if (!BleStatusHelper.getInstance().isBleEnabled(BleApplication.getContext())) {
 				disconnect(address);
 

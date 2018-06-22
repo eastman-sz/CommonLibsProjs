@@ -52,7 +52,6 @@ public class UpLoadHelper {
 	 * @param urls 服务器地址数组
 	 * @param params 要上传的参数
 	 * @param imageList 文件地址
-	 * @param handler 自定义的Handler
 	 */
 	public static String uploadFiles(String[] urls, HashMap<String, String> params , ArrayList<String> imageList) throws Exception{
 		return uploadFilesToServer(urls, params, imageList);
@@ -166,8 +165,7 @@ public class UpLoadHelper {
 	
 	/**
 	 * 文件上传。
-	 * @param url 要提交到的服务器地址
-	 * @param params 参数 
+	 * @param params 参数
 	 * @param imageList imageList要上传的图片文件地址的集合
 	 * @return 成功或失败
 	 */
@@ -194,7 +192,6 @@ public class UpLoadHelper {
 
 	/**
 	 * 上传文件的核心代码
-	 * @param url 服务器地址
 	 * @param params 封装后的请求参数
 	 * @param files 封装后的文件类型
 	 * @return
