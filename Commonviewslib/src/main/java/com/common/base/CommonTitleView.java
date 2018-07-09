@@ -1,10 +1,15 @@
 package com.common.base;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.common.views.lib.ss.R;
 
@@ -15,6 +20,7 @@ import java.lang.reflect.Field;
 public class CommonTitleView extends BaseRelativeLayout {
 
     private CustomFontTextView topTitleView = null;
+    private LinearLayout titleLayout = null;
     private CustomFontTextView leftBtnTextView = null;
     private CustomFontTextView centerTitleTextView = null;
     private CustomFontTextView rightBtnTextView = null;
@@ -42,6 +48,7 @@ public class CommonTitleView extends BaseRelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.sfs_common_title_view, this);
 
         topTitleView = (CustomFontTextView) findViewById(R.id.top_title_view);
+        titleLayout = (LinearLayout) findViewById(R.id.titleLayout);
         leftBtnTextView = (CustomFontTextView) findViewById(R.id.commom_left_textview);
         centerTitleTextView = (CustomFontTextView) findViewById(R.id.center_title_textview);
         rightBtnTextView = (CustomFontTextView) findViewById(R.id.commom_right_textview);
@@ -64,8 +71,30 @@ public class CommonTitleView extends BaseRelativeLayout {
         leftBtnTextView.setText(leftBtnText);
     }
 
+    public void setLeftBtnTextColor(int textColor){
+        leftBtnTextView.setTextColor(textColor);
+    }
+
     public void setLeftBtnText(int leftBtnText){
         leftBtnTextView.setText(leftBtnText);
+    }
+
+    public void setLeftBtnBackgroud(int resid){
+        Drawable drawable = getResources().getDrawable(resid);
+        if (null == drawable) {
+            return;
+        }
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        leftBtnTextView.setCompoundDrawables(drawable, null, null, null);
+    }
+
+    public void setRightBtnBackgroud(int resid){
+        Drawable drawable = getResources().getDrawable(resid);
+        if (null == drawable) {
+            return;
+        }
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        rightBtnTextView.setCompoundDrawables(null, null, drawable, null);
     }
 
     public void setCenterTitleText(String centerTitleText){
@@ -74,6 +103,10 @@ public class CommonTitleView extends BaseRelativeLayout {
 
     public void setCenterTitleText(int centerTitleText){
         centerTitleTextView.setText(centerTitleText);
+    }
+
+    public void setCenterTitleTextColor(int textColor){
+        centerTitleTextView.setTextColor(textColor);
     }
 
     public void setLeftBtnVisibility(int visibility){
@@ -90,6 +123,23 @@ public class CommonTitleView extends BaseRelativeLayout {
 
     public void setRightBtnText(int rightBtnText){
         rightBtnTextView.setText(rightBtnText);
+    }
+
+    public void setRightBtnTextColor(int textColor){
+        rightBtnTextView.setTextColor(textColor);
+    }
+
+    public void setTitleBackgroundColor(int bgcolor){
+        topTitleView.setBackgroundColor(bgcolor);
+        titleLayout.setBackgroundColor(bgcolor);
+    }
+
+    public void setRightBtnEnabled(boolean enabled){
+        rightBtnTextView.setEnabled(enabled);
+    }
+
+    public void setLeftBtnEnabled(boolean enabled){
+        leftBtnTextView.setEnabled(enabled);
     }
 
     OnClickListener listener = new OnClickListener(){

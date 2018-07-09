@@ -17,7 +17,7 @@
     
 <!-- =================commom_titile_bg========================== -->
     <LinearLayout
-    android:id="@+id/title_layout"
+    android:id="@+id/titleLayout"
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:background="@color/sfs_c10"
@@ -33,7 +33,6 @@
             android:gravity="center_vertical|left"
             android:textColor="@color/sfs_c1"
             android:textSize="@dimen/sfs_s5"
-            android:text="@string/sfs_back"
             android:drawablePadding="5dp"
             android:singleLine="true"
             android:maxLines="1"
