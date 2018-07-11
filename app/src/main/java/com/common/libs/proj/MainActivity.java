@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.common.base.BaseAppCompactActivitiy;
 import com.common.base.CommonTitleView;
+import com.common.libs.util.ILog;
 import com.common.libs.util.PermissionHelpler;
 import com.libs.module.CommonviewLibActivity;
 import com.libs.module.UtilsLibActivity;
@@ -18,8 +19,14 @@ import com.libs.module.phone.TelActivity;
 import com.libs.module.pullfreshview.PullFreshViewActivity;
 import com.libs.module.usb.UsbActivity;
 import com.libs.module.wheelview.DateTimeSelectDialog;
+import com.photo.album.ImgHelper;
+import com.photo.album.OnImgSelectResultListener;
+import com.photo.third.UniversalImageLoadTool;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseAppCompactActivitiy {
 
@@ -33,7 +40,9 @@ public class MainActivity extends BaseAppCompactActivitiy {
 
         initActivitys();
 
-        PermissionHelpler.requestPermissions(this);
+        UniversalImageLoadTool.init(context);
+
+//        PermissionHelpler.requestPermissions(this);
     }
 
     @Override
@@ -62,6 +71,8 @@ public class MainActivity extends BaseAppCompactActivitiy {
         list.add("Noti Tel");
         list.add("Wheelview");
         list.add("pullFreshView");
+        list.add("ImgSelect");
+        list.add("takePhoto");
 
         listView = (ListView) findViewById(R.id.listView);
         TextAdapter adapter = new TextAdapter(this , list);
@@ -101,6 +112,35 @@ public class MainActivity extends BaseAppCompactActivitiy {
                         break;
                     case 8:
                         startActivity(new Intent(context , PullFreshViewActivity.class));
+                        break;
+                    case 9:
+                        ImgHelper.Companion.selectImg(context, 3 , new OnImgSelectResultListener() {
+                            @Override
+                            public void onResult(@NotNull List<String> imgList) {
+
+                                ILog.e("已选择图片 " + imgList.size() + " 张");
+
+                                for (String imgPath : imgList){
+                                    ILog.e("已选择图片，地址:  " + imgPath);
+                                }
+
+                            }
+                        });
+
+                        break;
+                    case 10:
+                        ImgHelper.Companion.takePhoto(context, new OnImgSelectResultListener() {
+                            @Override
+                            public void onResult(@NotNull List<String> imgList) {
+
+                                ILog.e("已选择图片 " + imgList.size() + " 张");
+
+                                for (String imgPath : imgList){
+                                    ILog.e("已选择图片，地址:  " + imgPath);
+                                }
+                            }
+                        });
+
                         break;
                     default:
                         break;

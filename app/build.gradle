@@ -32,7 +32,7 @@ repositories {
     mavenCentral()
 }
 
-ext.kotlin_version = '1.2.50'
+ext.kotlin_version = '1.2.51'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -51,4 +51,5 @@ dependencies {
     implementation project(':wheelview')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':pullFreshView')
+    implementation project(':photoview')
 }

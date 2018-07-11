@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    android:background="@color/photoSdkTitleBgColor"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/photoSdkTitleBgColor"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/photoSdkTitleBgColor"
+        >
+        <TextView
+            android:id="@+id/leftBtnTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/photoSdkTitleTextColor"
+            android:text="返回"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/centerTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/photoSdkTitleTextColor"
+            />
+
+        <TextView
+            android:id="@+id/rightBtnTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/photoSdkTitleTextColor"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>
