@@ -24,7 +24,7 @@
     -->
     <application>
         <activity android:name="com.photo.album.ImgActivity"
-            android:theme="@android:style/Theme.Translucent"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             />
     </application>
 
