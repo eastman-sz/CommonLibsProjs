@@ -14,6 +14,7 @@ import com.libs.module.CommonviewLibActivity;
 import com.libs.module.UtilsLibActivity;
 import com.libs.module.ble.BleFuncActivity;
 import com.libs.module.ble.BleLibActivity;
+import com.libs.module.gd.GdLocationActivity;
 import com.libs.module.noti.NotifiActivity;
 import com.libs.module.phone.TelActivity;
 import com.libs.module.pullfreshview.PullFreshViewActivity;
@@ -73,6 +74,7 @@ public class MainActivity extends BaseAppCompactActivitiy {
         list.add("pullFreshView");
         list.add("ImgSelect");
         list.add("takePhoto");
+        list.add("Gd location");
 
         listView = (ListView) findViewById(R.id.listView);
         TextAdapter adapter = new TextAdapter(this , list);
@@ -141,6 +143,9 @@ public class MainActivity extends BaseAppCompactActivitiy {
                             }
                         });
 
+                        break;
+                    case 11:
+                        startActivity(new Intent(context , GdLocationActivity.class));
                         break;
                     default:
                         break;

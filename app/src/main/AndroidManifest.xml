@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.common.libs.proj">
 
+    <uses-sdk tools:overrideLibrary="com.common.views.lib.ss" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -59,10 +61,6 @@
 
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.HARDWARE_TEST" />
-
-    <uses-sdk
-        tools:overrideLibrary="com.common.views.lib.ss"
-        />
 
     <uses-feature
         android:name="android.hardware.usb.host"
@@ -140,7 +138,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.libs.module.pullfreshview.PullFreshViewActivity"></activity>
+        <activity android:name="com.libs.module.pullfreshview.PullFreshViewActivity" />
+        <activity android:name="com.libs.module.gd.GdLocationActivity"></activity>
     </application>
 
 </manifest>

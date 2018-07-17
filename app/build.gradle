@@ -6,7 +6,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.common.libs.proj"
+        applicationId "com.smartfuns.lvdong"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -52,4 +52,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':pullFreshView')
     implementation project(':photoview')
+    implementation project(':gdmap')
 }

@@ -1,1 +1,1 @@
-include ':app', ':UtilsLib', ':Numberprogressbar', ':Commonviewslib', ':blelib', ':ZZBleLibRelease', ':wheelview', ':pullFreshView', ':photoview'
+include ':app', ':UtilsLib', ':Numberprogressbar', ':Commonviewslib', ':blelib', ':ZZBleLibRelease', ':wheelview', ':pullFreshView', ':photoview', ':gdmap'
