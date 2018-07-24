@@ -13,17 +13,17 @@ open class PhotoBaseDialog : Dialog{
 
     protected var mContext : Context ?= null
 
-    constructor(context: Context) : super(context){
+    constructor(context: Context?) : super(context){
         this.mContext = context
         initSystemBar()
     }
 
-    constructor(context: Context , themeResId : Int) : super(context , themeResId){
+    constructor(context: Context? , themeResId : Int) : super(context , themeResId){
         this.mContext = context
         initSystemBar()
     }
 
-    constructor(context: Context , cancelable : Boolean, cancelListener : DialogInterface.OnCancelListener)
+    constructor(context: Context? , cancelable : Boolean, cancelListener : DialogInterface.OnCancelListener)
             : super(context , cancelable , cancelListener){
         this.mContext = context
         initSystemBar()

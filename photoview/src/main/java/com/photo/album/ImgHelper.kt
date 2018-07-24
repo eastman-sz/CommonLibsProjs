@@ -32,6 +32,22 @@ class ImgHelper {
             PhotoPreviewHelper.imgPreview(context , imgUrl)
         }
 
+        fun imgPreview(context: Context , imgList : List<String> , position : Int , deletable : Boolean){
+            PhotoPreviewHelper.imgPreview(context , imgList , position , deletable)
+        }
+
+        fun imgPreview(context: Context , imgUrl : String? , deletable : Boolean){
+            PhotoPreviewHelper.imgPreview(context , imgUrl , deletable)
+        }
+
+        fun imgPreview(context: Context , imgList : List<String> , position : Int , deletable : Boolean , onPhotoPreviewListener : OnPhotoPreviewListener?){
+            PhotoPreviewHelper.imgPreview(context , imgList , position , deletable , onPhotoPreviewListener)
+        }
+
+        fun imgPreview(context: Context , imgUrl : String? , deletable : Boolean , onPhotoPreviewListener : OnPhotoPreviewListener?){
+            PhotoPreviewHelper.imgPreview(context , imgUrl , deletable , onPhotoPreviewListener)
+        }
+
     }
 
 }

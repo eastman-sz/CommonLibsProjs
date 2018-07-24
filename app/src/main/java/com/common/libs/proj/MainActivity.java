@@ -22,6 +22,7 @@ import com.libs.module.usb.UsbActivity;
 import com.libs.module.wheelview.DateTimeSelectDialog;
 import com.photo.album.ImgHelper;
 import com.photo.album.OnImgSelectResultListener;
+import com.photo.album.OnPhotoPreviewListener;
 import com.photo.third.UniversalImageLoadTool;
 
 import org.jetbrains.annotations.NotNull;
@@ -125,6 +126,13 @@ public class MainActivity extends BaseAppCompactActivitiy {
                                 for (String imgPath : imgList){
                                     ILog.e("已选择图片，地址:  " + imgPath);
                                 }
+
+                                ImgHelper.Companion.imgPreview(context , imgList , 0 , true , new OnPhotoPreviewListener(){
+                                    @Override
+                                    public void onImgDel(int position) {
+                                        ILog.e("删除图片第 " + position + " 张");
+                                    }
+                                });
 
                             }
                         });

@@ -105,9 +105,12 @@ public class BaseRelativeLayout extends RelativeLayout {
 	 * 注销广播。
 	 */
 	private void unRegister(){
-		if (null != receiver && !addBroadCastAction().isEmpty()) {
-			context.unregisterReceiver(receiver);
-			receiver = null;
+		try {
+			if (null != receiver && !addBroadCastAction().isEmpty()) {
+				context.unregisterReceiver(receiver);
+				receiver = null;
+			}
+		}catch (Exception e){
 		}
 	}
 	

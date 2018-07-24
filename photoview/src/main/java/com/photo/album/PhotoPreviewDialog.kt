@@ -2,6 +2,10 @@ package com.photo.album
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import com.photo.base.OnPhotoCommonDialogClickListener
+import com.photo.base.PhotoCommonDialog
 import com.photo.base.PhotoFullScreenDialog
 import com.sdk.photo.view.R
 import kotlinx.android.synthetic.main.photo_preview_dialog.*
@@ -9,7 +13,8 @@ import kotlinx.android.synthetic.main.photo_preview_dialog.*
 class PhotoPreviewDialog : PhotoFullScreenDialog {
 
     private val list = ArrayList<String>()
-    private var adapter : PhotoPreviewAdapter ?= null
+
+    var onPhotoPreviewListener : OnPhotoPreviewListener ?= null
 
     constructor(context: Context) : super(context)
 
@@ -20,33 +25,79 @@ class PhotoPreviewDialog : PhotoFullScreenDialog {
         init()
     }
 
-    override fun initViews() {
-        adapter = PhotoPreviewAdapter(context , list)
-        photoViewPage.adapter = adapter
+    private val onPhotoPreviewAdapterClickListener = object : OnPhotoPreviewAdapterClickListener{
+        override fun onDelImg(position: Int) {
 
-        adapter?.onPhotoPreviewAdapterClickListener = object : OnPhotoPreviewAdapterClickListener{
-            override fun onDelImg(position: Int) {
+            val dialog = PhotoCommonDialog(mContext)
+            dialog.show()
+            dialog.setDialogText("确定要删除这张图片吗?" , "确定" , "取消")
+            dialog.onPhotoCommonDialogClickListener = object : OnPhotoCommonDialogClickListener{
+                override fun onClick(item: Int) {
+                    if (0 != item){
+                        return
+                    }
 
+                    Handler(Looper.getMainLooper()).post {
+                        val imgList = ArrayList<String>()
+                        list.forEachIndexed { index, s ->
+                            if (position != index){
+                                imgList.add(s)
+                            }
+                        }
+
+                        if (imgList.isEmpty()){
+                            dismiss()
+
+                            onPhotoPreviewListener?.onImgDel(position)
+                            return@post
+                        }
+
+                        setImgList(imgList , position , true)
+
+                        onPhotoPreviewListener?.onImgDel(position)
+                    }
+                }
             }
-            override fun onTapClick() {
+        }
+        override fun onTapClick() {
 
-            }
         }
     }
 
     fun setImgList(imgList : List<String> , position : Int){
-        list.clear()
-        list.addAll(imgList)
-        photoViewPage.setCurrentItem(position , true)
-        adapter?.notifyDataSetChanged()
+        setImgList(imgList , position , false)
     }
 
     fun setImgList(imgUrl : String?){
+        setImgList(imgUrl , false)
+    }
+
+    fun setImgList(imgList : List<String> , position : Int , deletable : Boolean){
+        list.clear()
+        list.addAll(imgList)
+
+        val adapter = PhotoPreviewAdapter(context , list)
+        adapter.deletable = deletable
+        photoViewPage.adapter = adapter
+
+        adapter.onPhotoPreviewAdapterClickListener = onPhotoPreviewAdapterClickListener
+
+        photoViewPage.setCurrentItem(position , true)
+        adapter.notifyDataSetChanged()
+    }
+
+    fun setImgList(imgUrl : String? , deletable : Boolean){
         list.clear()
         imgUrl?.let {
             list.add(it)
+            val adapter = PhotoPreviewAdapter(context , list)
+
+            photoViewPage.adapter = adapter
+            adapter.deletable = deletable
+            adapter.onPhotoPreviewAdapterClickListener = onPhotoPreviewAdapterClickListener
+
             photoViewPage.setCurrentItem(0 , true)
-            adapter?.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()
         }
     }
 
