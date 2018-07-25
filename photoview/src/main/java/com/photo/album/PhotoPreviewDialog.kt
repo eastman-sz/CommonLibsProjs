@@ -101,4 +101,27 @@ class PhotoPreviewDialog : PhotoFullScreenDialog {
         }
     }
 
+/*    *//**
+     * 将照片保存到系统相册。
+     *//*
+    private fun saveImageToLocalAlbum() {
+            try {
+                val cr = context.contentResolver
+                val path = BmpUtil.saveBmpToFile(bmp.get(curr))
+
+                val url = MediaStore.Images.Media.insertImage(cr, path.getAbsolutePath(), "iwy_image", null)
+                context.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path.getAbsolutePath())))
+                var tip = ""
+                if (null != url) {
+                    tip = "保存成功"
+                } else {
+                    tip = "保存失败"
+                }
+                ToastHelper.makeText(context, tip)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                ToastHelper.makeText(context, "保存失败")
+            }
+    }*/
+
 }
