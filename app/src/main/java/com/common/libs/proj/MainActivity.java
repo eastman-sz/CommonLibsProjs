@@ -9,11 +9,9 @@ import android.widget.ListView;
 import com.common.base.BaseAppCompactActivitiy;
 import com.common.base.CommonTitleView;
 import com.common.libs.util.ILog;
-import com.common.libs.util.PermissionHelpler;
 import com.libs.module.CommonviewLibActivity;
 import com.libs.module.UtilsLibActivity;
 import com.libs.module.ble.BleFuncActivity;
-import com.libs.module.ble.BleLibActivity;
 import com.libs.module.gd.GdLocationActivity;
 import com.libs.module.noti.NotifiActivity;
 import com.libs.module.phone.TelActivity;
@@ -24,9 +22,7 @@ import com.photo.album.ImgHelper;
 import com.photo.album.OnImgSelectResultListener;
 import com.photo.album.OnPhotoPreviewListener;
 import com.photo.third.UniversalImageLoadTool;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +39,6 @@ public class MainActivity extends BaseAppCompactActivitiy {
         initActivitys();
 
         UniversalImageLoadTool.init(context);
-
-//        PermissionHelpler.requestPermissions(this);
     }
 
     @Override

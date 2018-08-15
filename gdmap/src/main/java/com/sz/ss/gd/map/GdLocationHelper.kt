@@ -1,6 +1,7 @@
 package com.sz.ss.gd.map
 
 import android.app.Activity
+import android.content.Intent
 import android.widget.Toast
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
@@ -22,16 +23,14 @@ class GdLocationHelper {
 
     //开始定位
     fun startLocation(){
-        val hasLocationPermission = LocationPermissionHelper.hasLocationPermission(context)
-        when(hasLocationPermission){
-            true ->{
+        GdConfig.onLocationPermissionRequesterListener = object : OnLocationPermissionRequesterListener{
+            override fun onDeny() {
+            }
+            override fun onGranted() {
                 setLocationEnabled()
             }
-
-            false ->{
-                LocationPermissionHelper.requestLocationPermission(context , 5535)
-            }
         }
+        context?.startActivity(Intent(context , LocationPermissionActivity::class.java))
     }
 
     private fun setLocationEnabled(){
@@ -88,33 +87,8 @@ class GdLocationHelper {
         return mOption
     }
 
-/*    override fun onLocationChanged(aMapLocation: AMapLocation) {
-        //Log.e("定位服务" , "位置信息:   ${aMapLocation.toString()}")
-        gdLocationGpsHelper.onLocationChanged(aMapLocation)
-    }*/
-
-    fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray){
-        when(requestCode){
-            5535 ->{
-                val hasLocationPermission = LocationPermissionHelper.hasLocationPermission(context)
-                when(hasLocationPermission){
-                    true ->{
-                        setLocationEnabled()
-                    }
-
-                    false ->{
-                        Toast.makeText(context , "没有权限将不能使用定位服务" , Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-            }
-        }
-    }
-
-    internal val aMapLocationListener : AMapLocationListener = object : AMapLocationListener{
-        override fun onLocationChanged(aMapLocation: AMapLocation) {
-            gdLocationGpsHelper.onLocationChanged(aMapLocation)
-        }
+    private val aMapLocationListener : AMapLocationListener = AMapLocationListener{
+            gdLocationGpsHelper.onLocationChanged(it)
     }
 
 }
