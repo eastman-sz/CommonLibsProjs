@@ -34,10 +34,10 @@
         -->
 
 
-        <!-- 高德地图 -->
-        <meta-data
+        <!-- 高德地图-在调用处动态设置 -->
+<!--   <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="3da800c617810dcd2036f3d06d0d068b" />
+            android:value="3da800c617810dcd2036f3d06d0d068b" />-->
 
         <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
         <service android:name="com.amap.api.location.APSService" />

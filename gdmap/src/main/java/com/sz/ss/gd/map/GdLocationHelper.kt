@@ -1,6 +1,7 @@
 package com.sz.ss.gd.map
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.amap.api.location.AMapLocation
@@ -10,7 +11,7 @@ import com.amap.api.location.AMapLocationListener
 
 class GdLocationHelper {
 
-    private var context: Activity ?= null
+    private var context: Context ?= null
 
     private var aMapLocationClient: AMapLocationClient? = null
 
