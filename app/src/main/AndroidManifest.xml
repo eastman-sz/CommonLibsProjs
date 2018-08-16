@@ -140,6 +140,11 @@
 
         <activity android:name="com.libs.module.pullfreshview.PullFreshViewActivity" />
         <activity android:name="com.libs.module.gd.GdLocationActivity"></activity>
+
+        <!-- 高德地图-在调用处动态设置 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="3da800c617810dcd2036f3d06d0d068b" />
     </application>
 
 </manifest>
