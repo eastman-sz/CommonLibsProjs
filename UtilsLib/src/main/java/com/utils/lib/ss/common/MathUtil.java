@@ -219,6 +219,18 @@ public class MathUtil {
 	 * @param b
 	 * @return this * multiplicand.
 	 */
+	public static float multiplyF(float a , Double b){
+		BigDecimal b1 = new BigDecimal(a);
+		BigDecimal b2 = new BigDecimal(b);
+		return b1.multiply(b2).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
+
+	/**
+	 * Returns a new BigDecimal whose value is this * multiplicand. The scale of the result is the sum of the scales of the two arguments.
+	 * @param a
+	 * @param b
+	 * @return this * multiplicand.
+	 */
 	public static float multiplyF(float a , float b , int newScale){
 		BigDecimal b1 = new BigDecimal(a);
 		BigDecimal b2 = new BigDecimal(b);
