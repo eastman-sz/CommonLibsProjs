@@ -1,5 +1,6 @@
 package com.ble.lib.util;
 
+import java.math.BigInteger;
 import java.util.Locale;
 
 /**
@@ -102,6 +103,15 @@ public class CommonBleUtils {
      */
     public static float hex2Float(String hexStr){
         return Float.intBitsToFloat(Integer.valueOf(hexStr, 16));
+    }
+
+    /**
+     * 十六进制转换为BigInteger。
+     * @param hexStr
+     * @return
+     */
+    public static String hex2BigInteger(String hexStr){
+        return new BigInteger(hexStr, 16).toString(10);
     }
 
     /**

@@ -33,6 +33,7 @@ class PhotoDialog : PhotoFullScreenDialog {
         photoTitleView.setLeftBtnText("返回")
         photoTitleView.setCenterTitleText("")
         photoTitleView.setRightBtnText("完成")
+        photoTitleView.setRightBtnEnabled(false)
         photoTitleView.onPhotoTitleClickListener = object : PhotoTitleView.OnPhotoTitleClickListener(){
             override fun onLeftBtnClick() {
                 dismiss()
@@ -85,6 +86,8 @@ class PhotoDialog : PhotoFullScreenDialog {
                         count ++
                     }
                 }
+
+                photoTitleView.setRightBtnEnabled(count > 0)
 
                 if (count > maxNum){
                     photoInfo.choose = false
