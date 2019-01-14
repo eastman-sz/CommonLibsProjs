@@ -142,6 +142,13 @@ public class MainActivity extends BaseAppCompactActivitiy {
                                 for (String imgPath : imgList){
                                     ILog.e("已选择图片，地址:  " + imgPath);
                                 }
+
+                                ImgHelper.Companion.imgPreview(context , imgList , 0 , true , new OnPhotoPreviewListener(){
+                                    @Override
+                                    public void onImgDel(int position) {
+                                        ILog.e("删除图片第 " + position + " 张");
+                                    }
+                                });
                             }
                         });
 

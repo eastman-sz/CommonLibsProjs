@@ -17,7 +17,7 @@ public class SingleBtnDialog extends BaseDialog implements View.OnClickListener{
     private CustomFontTextView singleBtnTextView = null;
 
     public SingleBtnDialog(Context context) {
-        super(context , R.style.commom_Dialog);
+        super(context , R.style.common_Dialog);
     }
 
     @Override

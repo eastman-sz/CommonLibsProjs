@@ -23,7 +23,7 @@ public class CommonDialog extends BaseDialog {
     private CustomFontTextView rightBtnTextView = null;
 
     public CommonDialog(Context context) {
-        super(context , R.style.commom_Dialog);
+        super(context , R.style.common_Dialog);
     }
 
     @Override
