@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.photo.util.PhotoImgpHelper
-import com.photo.util.ImgPermissionHelpler
+import com.photo.util.ImgPermissionHelper
 /**
  * 相册和拍照。
  * @author E
@@ -27,28 +27,28 @@ class ImgActivity : Activity() {
         when(toType){
             1 -> {
                 //图片
-                val hasPermission = ImgPermissionHelpler.hasValiedImgPermission(this)
+                val hasPermission = ImgPermissionHelper.hasValidImgPermission(this)
                 when(hasPermission){
                     true -> {
                         toDoActions()
                     }
 
                     else ->{
-                        ImgPermissionHelpler.requestImgPermissions(this)
+                        ImgPermissionHelper.requestImgPermissions(this)
                     }
                 }
             }
 
             2 -> {
                 //拍照
-                val hasPermission = ImgPermissionHelpler.hasValiedTakePhotoPermission(this)
+                val hasPermission = ImgPermissionHelper.hasValidTakePhotoPermission(this)
                 when(hasPermission){
                     true -> {
                         toDoActions()
                     }
 
                     else ->{
-                        ImgPermissionHelpler.requestTakePhotoPermissions(this)
+                        ImgPermissionHelper.requestTakePhotoPermissions(this)
                     }
                 }
             }
@@ -144,7 +144,7 @@ class ImgActivity : Activity() {
         when(requestCode){
             1560 ->{
                 //拍照权限判断
-                val hasPermission = ImgPermissionHelpler.hasValiedTakePhotoPermission(this)
+                val hasPermission = ImgPermissionHelper.hasValidTakePhotoPermission(this)
                 when(hasPermission){
                     true -> {
                         toDoActions()
@@ -158,7 +158,7 @@ class ImgActivity : Activity() {
 
             1570 ->{
                 //相册选择图片权限判断
-                val hasPermission = ImgPermissionHelpler.hasValiedImgPermission(this)
+                val hasPermission = ImgPermissionHelper.hasValidImgPermission(this)
                 when(hasPermission){
                     true -> {
                         toDoActions()

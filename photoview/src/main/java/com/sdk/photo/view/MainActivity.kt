@@ -6,7 +6,7 @@ import android.util.Log
 import com.photo.album.OnImgSelectResultListener
 import com.photo.album.PhotoFolderDialog
 import com.photo.third.UniversalImageLoadTool
-import com.photo.util.ImgPermissionHelpler
+import com.photo.util.ImgPermissionHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ImgPermissionHelpler.requestTakePhotoPermissions(this)
+        ImgPermissionHelper.requestTakePhotoPermissions(this)
 
         UniversalImageLoadTool.init(this)
 
